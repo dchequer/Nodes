@@ -56,7 +56,9 @@ class LinkedList:
         Returns:
             int: value that was added
         """
-        pass
+        new = Node(new_val)
+        new.set_next_node(self.head)
+        self.head = new
     
     def append(self, new_val:Any) -> int:
         """Append value at end of list
@@ -67,8 +69,14 @@ class LinkedList:
         Returns:
             int: value that was added
         """
-        
-        pass
+        node = self.head
+        new = Node(new_val)
+        while node:
+            if not node.get_next_node():
+                node.set_next_node(new)
+                return new_val
+            node = node.get_next_node()
+
 
 if __name__ == '__main__':
     myList = LinkedList(Node(0))
